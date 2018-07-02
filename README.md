@@ -25,6 +25,8 @@ Or install it on Continuous Integration Server using following command
 
 ## Usage
 
+#### Warning: **** This is early stage of library and not ready to use yet until Apple releases AppStore Connect API ****
+
 > Note: At the moment, AppStore Connect API has not released to public Yet nor the AppStore Connect GUI available to experiemnt. So there is no wat to test this library in real world envirnment until Apple release AppStore Connect API to public. 
 
 AppStore Connect API deals with very sensitive information so security is very important aspect. The new AppStore Connect GUI will have ability to generate API KEY and Private Key for API. We should also able to see ISSUER_ID in the AppStore Connect GUI. 
