@@ -53,6 +53,7 @@ This will print the fresh token that we can use for the AppStore Connect API. We
 * Test the library when Apple releases API 
 * Add more options to generate token with multiple algorithms and expriry time 
 * Ability to use keep token secret rather than printing to console 
+* Add more RSpec Tests 
 
 
 
