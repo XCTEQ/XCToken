@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "xctoken"
+require 'fileutils'
+require 'tempfile'
+require 'json'
+require 'rubygems'
+require 'xctoken/version'
+require 'xctoken/main'
+
+lib_dir = File.expand_path('../lib', File.dirname(__FILE__))
+$LOAD_PATH.unshift lib_dir unless $LOAD_PATH.include?(lib_dir)
+$:.unshift lib_dir unless $:.include?(lib_dir)
+
+XCToken::Main.start(ARGV)
