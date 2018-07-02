@@ -1,4 +1,5 @@
-# Xctoken
+# XCToken
+##### Generate on-demand JWT tokens forAppStore Connect API from Continuous Integration servers 
 
 Apple has announced AppStore Connect API to automate all the task related to Apple Developer Portal as well as iTunes Connect (recently known as AppStore Connect). You can watch WWDC session [303](https://developer.apple.com/videos/play/wwdc2018/303/) to know more about this API. App Store Connect API can now interact with almost all the part of Apple Developer portal including, certificates, profiles and devices. App Store connect API will also touch almost all section of iTunes Connect which is remaned as App Store Connect including manging users and builds. However, this API requires JWT tokens to recieve response. Users needs to create tokens after every 20 minutes. 
 
@@ -28,9 +29,9 @@ AppStore Connect API deals with very sensitive information so security is very i
 
 XCToken needs 3 envirnmental varibale setup to secure those credentials. 
 
- *  ISSUER_ID : You can get it from AppStore Connect GUI 
- *  KEY_DIR: AppStore Connect has a way to generate private key. We have to keep this key secure and always has associated `KEY_ID` the private key is in the `.p8` format and reads like `AuthKey_KEY_ID.p8`. XCToken requires path to the directory where this private key located. e.g `/tmp` if you have private key at the path `/tmp/Auth_Key_1234.p8` 
- * KEY_ID : Every private key has KEY_ID we can set that as envirnment varilable as well 
+ *  `ISSUER_ID` : You can get it from AppStore Connect GUI 
+ *  `KEY_DIR` : AppStore Connect has a way to generate private key. We have to keep this key secure and always has associated `KEY_ID` the private key is in the `.p8` format and reads like `AuthKey_KEY_ID.p8`. XCToken requires path to the directory where this private key located. e.g `/tmp` if you have private key at the path `/tmp/Auth_Key_1234.p8` 
+ * `KEY_ID` : Every private key has KEY_ID we can set that as envirnment varilable as well 
 
  On Continuous Integration server, we can secure these credential using Envirnmental Varibale feature of specific CI server. These details shouldn't be exposed or hardcoded. You can enrypt and decrypt the `.p8` format private key on CI server to add extra layer of security. 
 
@@ -42,9 +43,9 @@ XCToken needs 3 envirnmental varibale setup to secure those credentials.
 ```
 
 Now that, we all setup to generate the JWT tokens using XCToken by using following simple command. 
-
+```
 $ xctoken generate 
-
+```
 This will print the fresh token that we can use for the AppStore Connect API. We can run this command every time we need fresh token from CI server. 
 
 ## TODO
