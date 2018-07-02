@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Shashikant86"]
   spec.email         = ["shashikant.jagtap@icloud.com"]
 
-  spec.summary       = %q{Generate on emand JWT Tokens for Apple's brand new AppStore Connect API .}
-  spec.description   = %q{Apple has introduced brand new AppStore Connect API whic requires JWT tokens to be generated after 20 minutes. XCToken can genarate quick tokens at regular intervals}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Generate on-demand JWT Tokens for Apple's brand new AppStore Connect API from Continuous Integration Servers.}
+  spec.description   = %q{Apple has introduced brand new AppStore Connect API whic requires JWT tokens to be generated after 20 minutes. XCToken can painlessly genarate JWT tokens at regular intervals from Continuous Integration Servers.}
+  spec.homepage      = "https://github.com/Shashikant86/XCToken"
   spec.license       = "MIT"
   if spec.respond_to?(:metadata)
     spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
