@@ -1,3 +1,5 @@
+[![CI Status](http://img.shields.io/travis/Shashikant86/XCToken.svg?style=flat&label=travisci)](https://travis-ci.org/Shashikant86/XCToken)
+
 # XCToken
 ##### Generate on-demand JWT tokens forAppStore Connect API from Continuous Integration servers 
 
