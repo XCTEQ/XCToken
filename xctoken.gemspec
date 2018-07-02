@@ -13,12 +13,6 @@ Gem::Specification.new do |spec|
   spec.description   = %q{Apple has introduced brand new AppStore Connect API whic requires JWT tokens to be generated after 20 minutes. XCToken can painlessly genarate JWT tokens at regular intervals from Continuous Integration Servers.}
   spec.homepage      = "https://github.com/Shashikant86/XCToken"
   spec.license       = "MIT"
-  if spec.respond_to?(:metadata)
-    spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
-  else
-    raise "RubyGems 2.0 or newer is required to protect against " \
-      "public gem pushes."
-  end
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
