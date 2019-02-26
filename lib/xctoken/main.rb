@@ -14,7 +14,9 @@ module XCToken
 		key_id = ENV["KEY_ID"]
 		key_dir = ENV["KEY_DIR"]
 
-		if File.file?("#{key_dir}/AuthKey_#{key_id}.p8")
+		full_key_path = "#{key_dir}/AuthKey_#{key_id}.p8"
+
+		if File.file?(full_key_path)
 			puts "Private Key Exist in the correct format with and matching identifier"
 	    else
 	       puts "Private key not found in the specified directory with key identifier assiciated"
@@ -22,7 +24,7 @@ module XCToken
 	       raise 'Private Key not setup correctly. Please make sure ENV[KEY_DIR] has private key'
 	    end
 
-	    private_key = OpenSSL::PKey.read(File.read("#{key_dir}/AuthKey_#{key_id}.p8"))
+	    private_key = OpenSSL::PKey.read(File.read(full_key_path))
 
 		$token = JWT.encode(
 		   {
