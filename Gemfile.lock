@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    xctoken (0.1.0)
+    xctoken (0.1.1)
       jwt (~> 2.1.0)
       thor (~> 0.17.0)
 
@@ -36,4 +36,4 @@ DEPENDENCIES
   xctoken!
 
 BUNDLED WITH
-   1.16.1
+   1.16.4
