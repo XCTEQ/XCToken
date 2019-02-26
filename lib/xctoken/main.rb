@@ -17,9 +17,7 @@ module XCToken
 
       full_key_path = "#{key_dir}/AuthKey_#{key_id}.p8"
 
-      if File.file?(full_key_path)
-        puts "Private Key Exist in the correct format with and matching identifier"
-      else
+      if !File.file?(full_key_path)
          puts "Private key not found in the specified directory with key identifier assiciated"
          puts "Please make sure KEY_DIR and KEY_ID environmetal varibales set correctly and private key exist in the KEY_DIR"
          raise 'Private Key not setup correctly. Please make sure ENV[KEY_DIR] has private key'
