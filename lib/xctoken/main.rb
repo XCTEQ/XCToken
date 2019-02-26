@@ -21,7 +21,8 @@ module XCToken
 	       puts "Please make sure KEY_DIR and KEY_ID environmetal varibales set correctly and private key exist in the KEY_DIR"
 	       raise 'Private Key not setup correctly. Please make sure ENV[KEY_DIR] has private key'
 	    end
-	    $private_key = OpenSSL::PKey.read(File.read("#{key_dir}/AuthKey_#{key_id}.p8"))
+
+	    private_key = OpenSSL::PKey.read(File.read("#{key_dir}/AuthKey_#{key_id}.p8"))
 
 		$token = JWT.encode(
 		   {
