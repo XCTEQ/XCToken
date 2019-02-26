@@ -1,11 +1,11 @@
 [![CI Status](http://img.shields.io/travis/Shashikant86/XCToken.svg?style=flat&label=travisci)](https://travis-ci.org/Shashikant86/XCToken)
 
 # XCToken
-##### Generate on-demand JWT tokens forAppStore Connect API from Continuous Integration servers 
+##### Generate on-demand JWT tokens forAppStore Connect API from Continuous Integration servers
 
-Apple has announced AppStore Connect API to automate all the task related to Apple Developer Portal as well as iTunes Connect (recently known as AppStore Connect). You can watch WWDC session [303](https://developer.apple.com/videos/play/wwdc2018/303/) to know more about this API. App Store Connect API can now interact with almost all the part of Apple Developer portal including, certificates, profiles and devices. App Store connect API will also touch almost all section of iTunes Connect which is remaned as App Store Connect including manging users and builds. However, this API requires JWT tokens to recieve response. Users needs to create tokens after every 20 minutes. 
+Apple has announced AppStore Connect API to automate all the task related to Apple Developer Portal as well as iTunes Connect (recently known as AppStore Connect). You can watch WWDC session [303](https://developer.apple.com/videos/play/wwdc2018/303/) to know more about this API. App Store Connect API can now interact with almost all the part of Apple Developer portal including, certificates, profiles and devices. App Store connect API will also touch almost all section of iTunes Connect which is remaned as App Store Connect including manging users and builds. However, this API requires JWT tokens to recieve response. Users needs to create tokens after every 20 minutes.
 
-XCToken is a Ruby library to generate on-demand tokens for the AppStore Connect API so that we can create tokens using this library without need to write custom scripts on Continuous Integration Servers. 
+XCToken is a Ruby library to generate on-demand tokens for the AppStore Connect API so that we can create tokens using this library without need to write custom scripts on Continuous Integration Servers.
 
 ## Installation
 
@@ -19,7 +19,7 @@ And then execute:
 
     $ bundle install
 
-Or install it on Continuous Integration Server using following command 
+Or install it on Continuous Integration Server using following command
 
     $ gem install xctoken
 
@@ -27,39 +27,43 @@ Or install it on Continuous Integration Server using following command
 
 #### Warning: **** This is early stage of library and not ready to use yet until Apple releases AppStore Connect API ****
 
-> Note: At the moment, AppStore Connect API has not released to public Yet nor the AppStore Connect GUI available to experiemnt. So there is no wat to test this library in real world envirnment until Apple release AppStore Connect API to public. 
+> Note: At the moment, AppStore Connect API has not released to public Yet nor the AppStore Connect GUI available to experiemnt. So there is no wat to test this library in real world envirnment until Apple release AppStore Connect API to public.
 
-AppStore Connect API deals with very sensitive information so security is very important aspect. The new AppStore Connect GUI will have ability to generate API KEY and Private Key for API. We should also able to see ISSUER_ID in the AppStore Connect GUI. 
+AppStore Connect API deals with very sensitive information so security is very important aspect. The new AppStore Connect GUI will have ability to generate API KEY and Private Key for API. We should also able to see ISSUER_ID in the AppStore Connect GUI.
 
-XCToken needs 3 envirnmental varibale setup to secure those credentials. 
+XCToken needs 3 environmental variable setup to secure those credentials.
 
- *  `ISSUER_ID` : You can get it from AppStore Connect GUI 
- *  `KEY_DIR` : AppStore Connect has a way to generate private key. We have to keep this key secure and always has associated `KEY_ID` the private key is in the `.p8` format and reads like `AuthKey_KEY_ID.p8`. XCToken requires path to the directory where this private key located. e.g `/tmp` if you have private key at the path `/tmp/Auth_Key_1234.p8` 
- * `KEY_ID` : Every private key has KEY_ID we can set that as envirnment varilable as well 
+ *  `ISSUER_ID` : You can get it from AppStore Connect GUI
+ *  `KEY_DIR` : AppStore Connect has a way to generate private key. We have to keep this key secure and always has associated `KEY_ID` the private key is in the `.p8` format and reads like `AuthKey_KEY_ID.p8`. XCToken requires path to the directory where this private key located. e.g `/tmp` if you have private key at the path `/tmp/AuthKey_1234.p8`
+ * `KEY_ID` : Every private key has KEY_ID we can set that as envirnment variable as well
 
- On Continuous Integration server, we can secure these credential using Envirnmental Varibale feature of specific CI server. These details shouldn't be exposed or hardcoded. You can enrypt and decrypt the `.p8` format private key on CI server to add extra layer of security. 
+ On Continuous Integration server, we can secure these credential using Envirnmental Variable feature of specific CI server. These details shouldn't be exposed or hardcoded. You can enrypt and decrypt the `.p8` format private key on CI server to add extra layer of security.
 
  ```
  $ export ISSUER_ID=1234
- $ export KEYDIR=/tmp
+ $ export KEY_DIR=/tmp
  $ export KEY_ID=1234
 
 ```
 
-Now that, we all setup to generate the JWT tokens using XCToken by using following simple command. 
+Now that, we all setup to generate the JWT tokens using XCToken by using following simple command.
 ```
-$ xctoken generate 
+$ xctoken generate
 ```
-This will print the fresh token that we can use for the AppStore Connect API. We can run this command every time we need fresh token from CI server. 
+This will print the fresh token that we can use for the AppStore Connect API. We can run this command every time we need fresh token from CI server.
+
+We can pass the printed token to an API call like so:
+```
+TOKEN=`xctoken generate`
+curl -H "Authorization: Bearer $TOKEN" https://api.appstoreconnect.apple.com/v1/users
+```
 
 ## TODO
 
-* Test the library when Apple releases API 
-* Add more options to generate token with multiple algorithms and expriry time 
-* Ability to use keep token secret rather than printing to console 
-* Add more RSpec Tests 
-
-
+* Test the library when Apple releases API
+* Add more options to generate token with multiple algorithms and expriry time
+* Ability to use keep token secret rather than printing to console
+* Add more RSpec Tests
 
 ## Development
 
