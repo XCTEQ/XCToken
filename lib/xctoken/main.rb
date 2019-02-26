@@ -34,7 +34,7 @@ module XCToken
          private_key,
          "ES256",
          header_fields = {
-           kid: 1234,
+           kid: key_id,
          }
        )
       puts $token
