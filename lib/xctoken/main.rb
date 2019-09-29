@@ -18,9 +18,9 @@ module XCToken
       full_key_path = "#{key_dir}/AuthKey_#{key_id}.p8"
 
       if !File.file?(full_key_path)
-         puts "Private key not found in the specified directory with key identifier assiciated"
-         puts "Please make sure KEY_DIR and KEY_ID environmetal varibales set correctly and private key exist in the KEY_DIR"
-         raise 'Private Key not setup correctly. Please make sure ENV[KEY_DIR] has private key'
+         puts "Private key not found in the specified directory with key identifier associated"
+         puts "Please make sure KEY_DIR and KEY_ID environmental variables are set correctly and private key exists in the KEY_DIR"
+         raise 'Private Key not setup correctly. Please make sure ENV[KEY_DIR] has a private key'
       end
 
       private_key = OpenSSL::PKey.read(File.read(full_key_path))
